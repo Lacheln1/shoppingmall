@@ -1,7 +1,7 @@
 window.onload=async()=>{
-    let resoponse = await axios.get("http://localhost:8080/getAllProducts");
-    console.log(resoponse);
-    let productList = Response.data;
+    let response = await axios.get("http://localhost:8080/getAllProducts");
+    console.log(response);
+    let productList = response.data;
     let productListDiv=``;
     productList.forEach(item => {
         productListDiv += `<div class="card mt-2" style="width: 10rem;">
@@ -9,9 +9,10 @@ window.onload=async()=>{
         <div class="card-body">
           <b class="card-title">${item.prodname}</b><br>
           <span class="card-text text-danger">${item.price}원</span>
-          <a href="#" class="btn btn-outline-info">담기</a>
+          <a href="#" class="btn btn-outline-info">장바구니 담기</a>
         </div>
       </div>`;
         
     });
+    document.getElementById("productListDiv").innerHTML = productListDiv;
 }
